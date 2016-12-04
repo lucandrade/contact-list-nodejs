@@ -1,15 +1,7 @@
 import HttStatus from 'http-status';
 import jwt from 'jwt-simple';
 import config from '../config/app';
-
-const defaultResponse = (data, statusCode = HttStatus.OK) => ({
-    data,
-    statusCode,
-});
-
-const errorResponse = (message, statusCode = HttStatus.BAD_REQUEST) => defaultResponse({
-    error: message,
-}, statusCode);
+import response from '../config/response';
 
 export default class UsersController {
     constructor(User) {
@@ -25,31 +17,31 @@ export default class UsersController {
                     id: user._id,
                     email: user.email,
                 };
-                return defaultResponse({
+                return response.success({
                     token: `JWT ${jwt.encode(payload, config.jwt.secret)}`,
                 });
             }
 
-            return errorResponse(HttStatus['401'], HttStatus.UNAUTHORIZED);
+            return response.error(HttStatus['401'], HttStatus.UNAUTHORIZED);
         });
     }
 
     getAll() {
         return this.model.find({})
-            .then(res => defaultResponse(res))
-            .catch(err => errorResponse(err.message));
+            .then(res => response.success(res))
+            .catch(err => response.error(err.message));
     }
 
     getById(id) {
         return this.model.findById(id)
-        .then(res => defaultResponse(res))
-        .catch(err => errorResponse(err.message));
+        .then(res => response.success(res))
+        .catch(err => response.error(err.message));
     }
 
     create(data) {
         return this.model.create(data)
-            .then(res => defaultResponse(res, HttStatus.CREATED))
-            .catch(err => errorResponse(err.message, HttStatus.UNPROCESSABLE_ENTITY));
+            .then(res => response.success(res, HttStatus.CREATED))
+            .catch(err => response.error(err.message, HttStatus.UNPROCESSABLE_ENTITY));
     }
 
     update(id, data) {
@@ -57,15 +49,15 @@ export default class UsersController {
             $set: data,
         })
             .then(() => this.model.findById(id))
-            .then(res => defaultResponse(res))
-            .catch(err => errorResponse(err.message, HttStatus.UNPROCESSABLE_ENTITY));
+            .then(res => response.success(res))
+            .catch(err => response.error(err.message, HttStatus.UNPROCESSABLE_ENTITY));
     }
 
     delete(id) {
         return this.model.remove({
             _id: id,
         })
-            .then(() => defaultResponse('', HttStatus.NO_CONTENT))
-            .catch(err => errorResponse(err.message, HttStatus.UNPROCESSABLE_ENTITY));
+            .then(() => response.success('', HttStatus.NO_CONTENT))
+            .catch(err => response.error(err.message, HttStatus.UNPROCESSABLE_ENTITY));
     }
 }
