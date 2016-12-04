@@ -1,0 +1,46 @@
+{
+  "name": "contactlist-nodejs",
+  "version": "1.0.0",
+  "description": "Nodejs with babel, express, mongoose, tests and jwt passport authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.js",
+    "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*.js",
+    "start": "babel-node start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucandrade/contact-list-nodejs.git"
+  },
+  "author": "Lucas Andrade <lucasandradedeveloper@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucandrade/contact-list-nodejs/issues"
+  },
+  "homepage": "https://github.com/lucandrade/contact-list-nodejs#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "helmet": "^3.1.0",
+    "http-status": "^0.2.3",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^4.7.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
