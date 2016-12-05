@@ -1,7 +1,7 @@
 import UsersController from '../controllers/users';
 
 export default app => {
-    const controller = new UsersController(app.datasource.models.User);
+    const controller = new UsersController(app);
     app.route('/auth')
         .post((req, res) => {
             controller.login(req.body.username, req.body.password)

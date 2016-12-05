@@ -4,8 +4,8 @@ import config from '../config/app';
 import response from '../config/response';
 
 export default class UsersController {
-    constructor(User) {
-        this.model = User;
+    constructor(app) {
+        this.model = app.datasource.models.User;
     }
 
     login(username, pass) {
