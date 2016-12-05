@@ -6,12 +6,12 @@
   "scripts": {
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint && npm run test:unit && npm run test:integration && npm run test:contracts",
     "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.js",
     "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*.js",
     "test:contracts": "NODE_ENV=test mocha --opts test/contracts/mocha.opts test/contracts/*.js",
-    "test": "npm run lint && npm run test:unit && npm run test:integration && npm run test:contracts",
-    "start": "babel-node start"
+    "start": "babel-node start",
+    "dev": "nodemon --exec npm start"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "joi": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
     "joi-assert": "0.0.3",
     "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
     "supertest": "^2.0.1",
     "testdouble": "^1.9.1"
   },

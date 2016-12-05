@@ -2,14 +2,13 @@ import UsersController from '../controllers/users';
 
 export default app => {
     const controller = new UsersController(app);
-    app.route('/auth')
-        .post((req, res) => {
-            controller.login(req.body.username, req.body.password)
-                .then(result => {
-                    res.status(result.statusCode)
-                        .send(result.data);
-                });
-        });
+    app.post('/auth', (req, res) => {
+        controller.login(req.body.username, req.body.password)
+            .then(result => {
+                res.status(result.statusCode)
+                    .send(result.data);
+            });
+    });
     app.route('/users')
         .post((req, res) => {
             controller.create(req.body)
