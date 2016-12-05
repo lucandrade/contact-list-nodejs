@@ -10,8 +10,8 @@
     "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.js",
     "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*.js",
     "test:contracts": "NODE_ENV=test mocha --opts test/contracts/mocha.opts test/contracts/*.js",
-    "start": "babel-node start",
-    "dev": "nodemon --exec npm start"
+    "start": "NODE_ENV=production babel-node start",
+    "dev": "nodemon --exec NODE_ENV=development babel-node start"
   },
   "repository": {
     "type": "git",
