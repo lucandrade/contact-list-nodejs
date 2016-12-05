@@ -30,6 +30,7 @@ export default class UsersController {
                 };
                 return response.success({
                     token: `JWT ${jwt.encode(payload, config.jwt.secret)}`,
+                    user,
                 });
             }
 
