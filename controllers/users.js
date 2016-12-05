@@ -15,9 +15,7 @@ export default class UsersController {
     }
 
     me() {
-        return this.model.findById(this.user.id)
-            .then(res => response.success(res))
-            .catch(err => response.error(err.message));
+        return this.getById(this.user.id);
     }
 
     login(username, pass) {
