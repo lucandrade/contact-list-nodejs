@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "cors": "https://registry.npmjs.org/cors/-/cors-2.8.1.tgz",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
