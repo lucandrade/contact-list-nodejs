@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.js",
     "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*.js",
+    "test:contracts": "NODE_ENV=test mocha --opts test/contracts/mocha.opts test/contracts/*.js",
     "start": "babel-node start"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
+    "joi": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
     "joi-assert": "0.0.3",
     "mocha": "^3.2.0",
     "supertest": "^2.0.1",
