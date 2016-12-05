@@ -9,6 +9,19 @@ const ContactSchema = new Schema({
     address: { type: String },
     lat: { type: Number },
     lon: { type: Number },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+}, {
+    timestamps: true,
+    versionKey: false,
+});
+
+ContactSchema.set('toJSON', {
+    transform: function userSchemaToJson(doc, ret) {
+        const docJson = ret;
+        docJson.id = docJson._id;
+        delete docJson._id;
+        return docJson;
+    },
 });
 
 export default mongoose.model('Contact', ContactSchema);
