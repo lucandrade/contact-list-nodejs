@@ -11,7 +11,8 @@ export default class UsersController {
     login(username, pass) {
         return this.model.findOne({
             email: username,
-        }).then(user => {
+        })
+        .then(user => {
             if (user && user.comparePassword(pass)) {
                 const payload = {
                     id: user._id,
@@ -34,8 +35,8 @@ export default class UsersController {
 
     getById(id) {
         return this.model.findById(id)
-        .then(res => response.success(res))
-        .catch(err => response.error(err.message));
+            .then(res => response.success(res))
+            .catch(err => response.error(err.message));
     }
 
     create(data) {
