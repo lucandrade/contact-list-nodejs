@@ -6,6 +6,18 @@ import response from '../config/response';
 export default class UsersController {
     constructor(app) {
         this.model = app.datasource.models.User;
+        this.user = null;
+    }
+
+    setUser(user) {
+        this.user = user;
+        return this;
+    }
+
+    me() {
+        return this.model.findById(this.user.id)
+            .then(res => response.success(res))
+            .catch(err => response.error(err.message));
     }
 
     login(username, pass) {

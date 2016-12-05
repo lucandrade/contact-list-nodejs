@@ -22,6 +22,29 @@ describe('Routes Users', () => {
                 done();
             });
     });
+
+    describe('Route GET /me', () => {
+        it('should return status code 401', done => {
+            request
+                .get('/me')
+                .end((err, res) => {
+                    expect(res.statusCode).to.be.equal(401);
+                    done(err);
+                });
+        });
+
+        it('should return logged user', done => {
+            request
+                .get('/me')
+                .set('Authorization', `JWT ${token}`)
+                .end((err, res) => {
+                    expect(res.body.id).to.be.equal(defaultUser._id.toString());
+                    expect(res.body.name).to.be.equal(defaultUser.name);
+                    done(err);
+                });
+        });
+    });
+
     describe('Route GET /users', () => {
         it('should return a list of users', done => {
             request

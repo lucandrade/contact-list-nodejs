@@ -1,3 +1,4 @@
+import HttStatus from 'http-status';
 import UsersController from '../controllers/users';
 
 export default app => {
@@ -9,6 +10,20 @@ export default app => {
                     .send(result.data);
             });
     });
+
+    app.get('/me', app.auth.authenticate(), (req, res) => {
+        if (req.user) {
+            controller.setUser(req.user)
+                .me()
+                .then(result => {
+                    res.status(result.statusCode)
+                        .send(result.data);
+                });
+        } else {
+            res.sendStatus(HttStatus.UNAUTHORIZED);
+        }
+    });
+
     app.route('/users')
         .post((req, res) => {
             controller.create(req.body)
