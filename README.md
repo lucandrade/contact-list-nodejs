@@ -1,6 +1,12 @@
 # Contact List App - NodeJS Server
 
-Nodejs server for contact list application
+This is a backend of the contact list application
+
+[Live Demo](https://lucandrade.github.io/contact-list-reactjs/)
+
+For frontend source code, follow the link below
+
+[Frontend](https://github.com/lucandrade/contact-list-reactjs)
 
 ## Requirements
 
