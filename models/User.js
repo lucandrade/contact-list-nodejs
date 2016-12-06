@@ -3,9 +3,9 @@ import bcrypt from 'bcrypt';
 
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
+    name: { type: String, required: [true, 'Preencha o campo nome'] },
+    email: { type: String, required: [true, 'Preencha o campo email'] },
+    password: { type: String, required: [true, 'Preencha o campo senha'] },
 }, {
     versionKey: false,
 });

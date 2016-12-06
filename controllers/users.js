@@ -41,19 +41,19 @@ export default class UsersController {
     getAll() {
         return this.model.find({})
             .then(res => response.success(res))
-            .catch(err => response.error(err.message));
+            .catch(err => response.error(err));
     }
 
     getById(id) {
         return this.model.findById(id)
             .then(res => response.success(res))
-            .catch(err => response.error(err.message));
+            .catch(err => response.error(err));
     }
 
     create(data) {
         return this.model.create(data)
             .then(res => response.success(res, HttStatus.CREATED))
-            .catch(err => response.error(err.message, HttStatus.UNPROCESSABLE_ENTITY));
+            .catch(err => response.error(err, HttStatus.UNPROCESSABLE_ENTITY));
     }
 
     update(id, data) {
@@ -62,7 +62,7 @@ export default class UsersController {
         })
             .then(() => this.model.findById(id))
             .then(res => response.success(res))
-            .catch(err => response.error(err.message, HttStatus.UNPROCESSABLE_ENTITY));
+            .catch(err => response.error(err, HttStatus.UNPROCESSABLE_ENTITY));
     }
 
     delete(id) {
@@ -70,6 +70,6 @@ export default class UsersController {
             _id: id,
         })
             .then(() => response.success('', HttStatus.NO_CONTENT))
-            .catch(err => response.error(err.message, HttStatus.UNPROCESSABLE_ENTITY));
+            .catch(err => response.error(err, HttStatus.UNPROCESSABLE_ENTITY));
     }
 }

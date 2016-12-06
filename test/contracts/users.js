@@ -34,6 +34,11 @@ describe('Routes Users', () => {
                 .end((err, res) => {
                     const tokenContract = Joi.object().keys({
                         token: Joi.string(),
+                        user: Joi.object().keys({
+                            id: Joi.string(),
+                            name: Joi.string(),
+                            email: Joi.string(),
+                        }),
                     });
                     JoiAssert(res.body, tokenContract);
                     done(err);
